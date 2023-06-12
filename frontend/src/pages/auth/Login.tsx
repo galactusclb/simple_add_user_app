@@ -1,5 +1,6 @@
-import { LoginForm } from "features/authentication";
 import React from "react";
+
+import { LoginForm } from "features/authentication";
 
 const Login = () => {
 	return (

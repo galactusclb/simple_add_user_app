@@ -9,7 +9,7 @@ function App() {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<div className="container-fuild">
+			<div className="container-fuild px-0">
 				<BrowserRouter>
 					<Routes>
 						{/* <Route path="/admin/*" element={<AdminLayout />} /> */}

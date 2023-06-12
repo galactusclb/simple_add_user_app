@@ -1,0 +1,18 @@
+html,
+body {
+	height: 100%;
+}
+
+// * {
+// 	background: rgba(0 100 0 / 0.1);
+// }
+
+body {
+	cursor: default;
+	scroll-behavior: smooth;
+
+	::selection {
+		background: var(--color-primary-700);
+		color: var(--color-shades-00);
+	}
+}

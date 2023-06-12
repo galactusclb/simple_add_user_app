@@ -10,19 +10,15 @@ import { generateHashPassword, verifyHashPassword } from "./auth.utils"
 import { User } from "./types/user.type"
 import { RefreshToken } from "./types/refresh-token.type"
 
+export const doSignup = withTransaction(async (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    session
+): Promise<{ userDoc: User } | undefined> => {
 
-
-export const doSignup = withTransaction(async (email: string, userName: string, password: string, session): Promise<{
-    userDoc: User,
-    refreshTokenDoc: RefreshToken
-} | undefined> => {
-
-    const hasUser = await UserModel.findOne({
-        $or: [
-            { userName },
-            { email }
-        ]
-    })
+    const hasUser = await UserModel.findOne({ email })
 
     if (hasUser) {
         throw new ForbiddenError("Can't create a user with that credential.")
@@ -32,26 +28,19 @@ export const doSignup = withTransaction(async (email: string, userName: string, 
 
     let userDoc = new UserModel({
         email,
-        userName,
-        password: hashedPassword,
-        role: constants?.AUTH_ROLES?.USER
-    })
-
-    const refreshTokenDoc = new RefreshTokenModel({
-        owner: userDoc.id
+        firstName,
+        lastName,
+        password: hashedPassword
     })
 
     await userDoc.save({ session })
-    await refreshTokenDoc.save({ session })
 
     userDoc = excludeProperties(userDoc, ["password", "createdAt", "updatedAt"])
 
     return {
-        userDoc,
-        refreshTokenDoc
+        userDoc
     }
 })
-
 
 export const doLogin = withTransaction(async (userName: string, password: string, session): Promise<{
     userDoc: User,
@@ -83,49 +72,3 @@ export const doLogin = withTransaction(async (userName: string, password: string
         refreshTokenDoc
     }
 })
-
-export const doCreateNewRefreshToken = withTransaction(async (userId: string, currentRefreshTokenID: string, session): Promise<RefreshToken> => {
-
-    const tokenExists = await RefreshTokenModel.exists({ _id: currentRefreshTokenID })
-
-    if (!tokenExists) {
-        throw new UnauthorizedError("Unauthorized token 2")
-    }
-
-    const refreshTokenDoc = new RefreshTokenModel({
-        owner: userId
-    })
-
-    await refreshTokenDoc.save({ session })
-
-    const gg = await RefreshTokenModel.deleteOne({ _id: currentRefreshTokenID }, { session })
-    console.log(gg);
-
-    return refreshTokenDoc
-})
-
-export const doDeleteRefreshToken = async (refreshTokenID: string) => {
-
-    const deletedRes = await RefreshTokenModel.deleteOne({ _id: refreshTokenID })
-
-    console.log(deletedRes);
-
-    if (deletedRes?.deletedCount) {
-        console.log("A refresh token has been deleted.");
-    }
-
-    return true
-}
-
-export const doDeleteAllRefreshToken = async (userID: string) => {
-
-    const deletedRes = await RefreshTokenModel.deleteMany({ owner: userID })
-
-    console.log(deletedRes);
-
-    if (deletedRes?.deletedCount) {
-        console.log("A refresh token has been deleted.");
-    }
-
-    return true
-}

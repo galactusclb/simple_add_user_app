@@ -11,9 +11,4 @@ const refreshTokenSchema = new Schema({
     }
 )
 
-// refreshTokenSchema.path('__v', {
-//     type: Number,
-//     select: false
-// });
-
 export const RefreshTokenModel = model<RefreshToken>("RefreshToken", refreshTokenSchema)
