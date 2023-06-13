@@ -5,6 +5,7 @@ import useUser from "../hooks/useUser";
 
 import { constants } from "utils/constants";
 import { Button } from "@components/ui/button/Button";
+import { FormInput } from "@components/ui/input/FormInput";
 
 type Inputs = {
 	email: string;
@@ -38,14 +39,10 @@ const CreateUserForm = () => {
 						<label htmlFor="userName1" className="form-label">
 							First name
 						</label>
-						<input
-							type="text"
-							className="form-control"
-							id="firstName1"
-							aria-describedby="firstNameHelp"
+						<FormInput
 							{...register("firstName", {
 								required: {
-									value: false,
+									value: true,
 									message: "First name is required",
 								},
 							})}
@@ -58,14 +55,10 @@ const CreateUserForm = () => {
 						<label htmlFor="userName1" className="form-label">
 							Last name
 						</label>
-						<input
-							type="text"
-							className="form-control"
-							id="lastName1"
-							aria-describedby="lastNameHelp"
+						<FormInput
 							{...register("lastName", {
 								required: {
-									value: false,
+									value: true,
 									message: "Last name is required",
 								},
 							})}
@@ -80,20 +73,17 @@ const CreateUserForm = () => {
 					<label htmlFor="exampleInputEmail1" className="form-label">
 						Email address
 					</label>
-					<input
-						type="text"
-						className="form-control"
-						id="exampleInputEmail1"
-						aria-describedby="emailHelp"
+					<FormInput
+						type="email"
 						{...register("email", {
 							required: {
-								value: false,
+								value: true,
 								message: "Email is required",
 							},
-							// pattern: {
-							// 	value: constants.REGEX_PATTERNS?.EMAIL_REGEX,
-							// 	message: "Entered email does not match email format",
-							// },
+							pattern: {
+								value: constants.REGEX_PATTERNS?.EMAIL_REGEX,
+								message: "Entered email does not match email format",
+							},
 						})}
 					/>
 					{errors.email && <span role="alert">{errors.email.message}</span>}
@@ -103,13 +93,11 @@ const CreateUserForm = () => {
 					<label htmlFor="exampleInputPassword1" className="form-label">
 						Password
 					</label>
-					<input
+					<FormInput
 						type="password"
-						className="form-control"
-						id="exampleInputPassword1"
 						{...register("password", {
 							required: {
-								value: false,
+								value: true,
 								message: "Password is required",
 							},
 							pattern: {
@@ -121,6 +109,11 @@ const CreateUserForm = () => {
 					{errors.password && (
 						<span role="alert">{errors?.password?.message}</span>
 					)}
+
+					<div id="passwordHelp" className="form-text">
+						Password should contain a lowercase letter, upper case letter,
+						number & a special character.
+					</div>
 				</div>
 
 				<div className="d-flex flex-row justify-content-end mt-4">

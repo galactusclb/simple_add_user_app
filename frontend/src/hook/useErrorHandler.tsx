@@ -14,6 +14,7 @@ const useErrorHandler = () => {
 			case 401:
 				return console.error(message || "Unauthorized: please log in");
 			case 403:
+				notify("error", message);
 				return console.error(
 					message ||
 						"Forbidden: you do not have permission to access this resource"
