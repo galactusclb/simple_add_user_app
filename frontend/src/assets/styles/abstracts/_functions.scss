@@ -1,0 +1,16 @@
+@use "sass:math" as math;
+
+//convet px value to rem
+$rem-base: 16px !default;
+@function strip-unit($num) {
+	@return math.div($num, $num * 0 + 1);
+}
+
+// CONVERT TO REM
+@function pxToRem($value, $base-value: $rem-base) {
+	$value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
+	@if ($value == 0rem) {
+		$value: 0;
+	} // Turn 0rem into 0
+	@return $value;
+}

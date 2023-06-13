@@ -1,23 +1,14 @@
-import Login from "@pages/auth/Login"
-import Signup from "@pages/auth/Signup"
+import Users from "@pages/auth/Users"
 import { NotFound } from "pages/NotFound"
 
 const routes = [
     {
         path: "/",
-        redirectTo: "/login"
-    },
-    // {
-    //     path: "*",
-    //     redirectTo: "/notices"
-    // },
-    {
-        path: "/login",
-        component: Login
+        redirectTo: "/users"
     },
     {
-        path: "/signup",
-        component: Signup
+        path: "/users",
+        component: Users
     },
     {
         path: "*",

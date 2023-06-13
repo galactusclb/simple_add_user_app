@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import UserLayout from "layouts/user-layout/UserLayout";
+
 import { NotFound } from "@pages/NotFound";
 
 function App() {
@@ -9,7 +11,7 @@ function App() {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<div className="container-fuild">
+			<div className="container-fuild px-0">
 				<BrowserRouter>
 					<Routes>
 						{/* <Route path="/admin/*" element={<AdminLayout />} /> */}
@@ -17,7 +19,7 @@ function App() {
 					</Routes>
 				</BrowserRouter>
 
-				{/* <ToastContainer /> */}
+				<ToastContainer />
 			</div>
 		</QueryClientProvider>
 	);

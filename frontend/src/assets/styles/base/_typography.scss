@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+:root {
+	--txt-h1: #{$txt-h1};
+	--txt-h2: #{$txt-h2};
+	--txt-h3: #{$txt-h3};
+
+	--txt-lg: #{$txt-lg};
+	--txt-base: #{$txt-base};
+	--txt-s: #{$txt-s};
+	--txt-xs: #{$txt-xs};
+	--txt-xxs: #{$txt-xxs};
+
+	--line-height-txt-h1: #{$line-height-h1};
+	--line-height-txt-h2: #{$line-height-h2};
+	--line-height-txt-h3: #{$line-height-h3};
+
+	--line-height-txt-lg: #{$line-height-txt-lg};
+	--line-height-txt-base: #{$line-height-txt-base};
+	--line-height-txt-s: #{$line-height-txt-s};
+	--line-height-txt-xs: #{$line-height-txt-xs};
+	--line-height-txt-xss: #{$line-height-txt-xxs};
+}
+
+html {
+	// font-size: 16px;
+
+	body {
+		font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+			Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+			sans-serif;
+		line-height: var(--line-heigt);
+	}
+}

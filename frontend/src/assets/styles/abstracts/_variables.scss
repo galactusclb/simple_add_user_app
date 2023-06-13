@@ -1,0 +1,103 @@
+//! Colors
+
+$shades-00: #ffffff;
+$shades-100: #161616;
+
+//primary colors
+$primary-50: #f0fcff;
+$primary-100: #e0f7fe;
+$primary-200: #baeefd;
+$primary-300: #7de0fc;
+$primary-400: #38cef8;
+$primary-500: #0ebae9;
+$primary-600: #009ec9;
+$primary-700: #037fa1;
+$primary-800: #076a85;
+$primary-900: #0c596e;
+
+//neutral colors
+$neutral-50: #f8fafc;
+$neutral-100: #f1f5f9;
+$neutral-200: #e2e8f0;
+$neutral-300: #cbd5e1;
+$neutral-400: #94a3b8;
+$neutral-500: #64748b;
+$neutral-600: #475569;
+$neutral-700: #334155;
+$neutral-800: #1e293b;
+$neutral-900: #0f172a;
+
+//yellow colors
+$yellow-50: #fffbf0;
+$yellow-100: #fef5e0;
+$yellow-200: #fde9ba;
+$yellow-300: #fcd67d;
+$yellow-400: #f8be38;
+$yellow-500: #f5aa00;
+$yellow-600: #c98d00;
+$yellow-700: #a17203;
+$yellow-800: #855f07;
+$yellow-900: #6c4f0a;
+
+//pink colors
+$pink-50: #fef2f6;
+$pink-100: #fee0ea;
+$pink-200: #fdbad0;
+$pink-300: #fc7da7;
+$pink-400: #f83e7c;
+$pink-500: #e6326e;
+$pink-600: #e6326e;
+$pink-700: #a10338;
+$pink-800: #850731;
+$pink-900: #6e0c2d;
+
+//green colors
+$green-50: #f0fdf4;
+$green-500: #22c55e;
+$green-600: #00a63d;
+$green-900: #14532d;
+
+//red colors
+$red-50: #fff0f5;
+$red-400: #f73978;
+$red-500: #e6326e;
+$red-600: #c90043;
+
+//success colors
+$success-50: #f0fdf4;
+$success-500: #22c55e;
+$success-900: #14532d;
+
+//error colors
+$error-50: #fef2f2;
+$error-500: #ef4444;
+$error-900: #7f1d1d;
+
+//warning colors
+$warning-50: #fffbeb;
+$warning-500: #f59e0b;
+$warning-900: #78350f;
+
+// !typography
+
+//font-size
+$txt-h1: pxToRem(40px);
+$txt-h2: pxToRem(36px);
+$txt-h3: pxToRem(24px);
+
+$txt-lg: pxToRem(18px);
+$txt-base: pxToRem(16px);
+$txt-s: pxToRem(14px);
+$txt-xs: pxToRem(12px);
+$txt-xxs: pxToRem(10px);
+
+// line height
+$line-height-h1: pxToRem(56px);
+$line-height-h2: pxToRem(48px);
+$line-height-h3: pxToRem(32px);
+
+$line-height-txt-lg: pxToRem(24px);
+$line-height-txt-base: pxToRem(24px);
+$line-height-txt-s: pxToRem(24px);
+$line-height-txt-xs: pxToRem(16px);
+$line-height-txt-xxs: pxToRem(16px);

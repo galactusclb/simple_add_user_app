@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useAuth from "features/authentication/hooks/useAuth";
+import useAuth from "features/authentication/hooks/useUser";
 
 const Header = () => {
 	const { isLoggedIn, userDetails, logout } = useAuth();

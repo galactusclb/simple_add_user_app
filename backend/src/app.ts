@@ -1,3 +1,5 @@
+//?  modular / layered architecture
+
 import express, { Application, Request, Response } from "express"
 import cors from 'cors';
 import "dotenv/config";
@@ -11,10 +13,6 @@ import { badJsonHandler, errorHandler, notFoundHandler } from "middlewares";
 const app: Application = express()
 app.use(express.json())
 
-// error handler
-
-
-//!  modular / layered architecture
 
 // var allowedOrigins = ['*', 'http://example2.com']
 
