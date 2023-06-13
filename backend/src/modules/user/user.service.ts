@@ -3,11 +3,11 @@ import { excludeProperties } from "@utils/common-helper"
 import { ForbiddenError } from "@utils/api-errors"
 import { withTransaction } from "@utils/mongoose-helper"
 
-import { UserModel } from "./models/user.model"
-import { generateHashPassword } from "./auth.utils"
-import { User } from "./types/user.type"
+import { UserModel } from "./user.model"
+import { generateHashPassword } from "./user.utils"
+import { User } from "./user.type"
 
-export const doSignup = withTransaction(async (
+export const doCreateUser = withTransaction(async (
     email: string,
     password: string,
     firstName: string,

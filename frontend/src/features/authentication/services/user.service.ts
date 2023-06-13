@@ -4,14 +4,17 @@ import { buildResponse } from "utils/responseBuilder"
 
 export const doCreateUser = async (payload: {
     email: string,
-    userName: string,
+    firstName: string,
+    lastName: string,
     password: string,
 }) => {
-    return await getApi().post("/auth/signup", payload)
+    return await getApi().post("/users/user", payload)
         .then((res: AxiosResponse) => {
-            return buildResponse(true, res.data)
+            console.log(res);
+
+            return buildResponse(true, res?.data)
         })
         .catch((err: AxiosError) => {
-            return buildResponse(false, err.response?.data, err.response?.status)
+            return buildResponse(false, err?.response?.data, err?.response?.status)
         })
 }

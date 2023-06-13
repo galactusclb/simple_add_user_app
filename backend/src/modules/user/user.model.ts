@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-import { User } from "../types/user.type";
+import { User } from "./user.type";
 
 const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },

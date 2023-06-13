@@ -1,5 +1,5 @@
-import SignupForm from "./components/SignupForm"
+import CreateUserForm from "./components/CreateUserForm"
 
 export {
-    SignupForm,
+    CreateUserForm,
 }

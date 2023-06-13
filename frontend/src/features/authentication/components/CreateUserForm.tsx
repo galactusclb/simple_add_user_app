@@ -1,7 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import useAuth from "../hooks/useAuth";
+import useUser from "../hooks/useUser";
 
 import { constants } from "utils/constants";
 import { Button } from "@components/ui/button/Button";
@@ -13,7 +13,7 @@ type Inputs = {
 	lastName: string;
 };
 
-const SignupForm = () => {
+const CreateUserForm = () => {
 	const {
 		register,
 		handleSubmit,
@@ -24,7 +24,7 @@ const SignupForm = () => {
 		mode: "onChange",
 	});
 
-	const { isLoading, createUser } = useAuth(reset);
+	const { isLoading, createUser } = useUser(reset);
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => createUser(data);
 
@@ -146,4 +146,4 @@ const SignupForm = () => {
 	);
 };
 
-export default SignupForm;
+export default CreateUserForm;
