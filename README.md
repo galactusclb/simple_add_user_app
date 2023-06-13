@@ -6,7 +6,7 @@ This repository contains the code for the simple_add_user_app project, which inc
 
 ## Frontend
 
-The frontend is created using Vite, TypeScript, and React. It is located in the `frontend` folder.
+The frontend is created using Vite, TypeScript, and React. It follows a modular/layered file architecture and is located in the `frontend` folder.
 
 ## Backend
 
