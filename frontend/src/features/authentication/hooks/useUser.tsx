@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { handleError } from "utils/errorHandler";
-
 import useToast from "hook/useToast";
 
 import { doCreateUser } from "../services/user.service";
+import useErrorHandler from "hook/useErrorHandler";
 
 const useUser = (reset: () => void) => {
 	const { notify } = useToast();
+	const { handleError } = useErrorHandler();
 
 	const [isLoading, toggleLoading] = useState<boolean>(false);
 
@@ -20,7 +20,7 @@ const useUser = (reset: () => void) => {
 
 		if (!response || !response?.success) {
 			const error = response?.data?.error;
-			return handleError(error?.status, error?.message);
+			return handleError(error?.code, error?.message);
 		}
 
 		reset();

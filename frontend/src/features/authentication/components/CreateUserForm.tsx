@@ -45,7 +45,7 @@ const CreateUserForm = () => {
 							aria-describedby="firstNameHelp"
 							{...register("firstName", {
 								required: {
-									value: true,
+									value: false,
 									message: "First name is required",
 								},
 							})}
@@ -65,7 +65,7 @@ const CreateUserForm = () => {
 							aria-describedby="lastNameHelp"
 							{...register("lastName", {
 								required: {
-									value: true,
+									value: false,
 									message: "Last name is required",
 								},
 							})}
@@ -81,19 +81,19 @@ const CreateUserForm = () => {
 						Email address
 					</label>
 					<input
-						type="email"
+						type="text"
 						className="form-control"
 						id="exampleInputEmail1"
 						aria-describedby="emailHelp"
 						{...register("email", {
 							required: {
-								value: true,
+								value: false,
 								message: "Email is required",
 							},
-							pattern: {
-								value: constants.REGEX_PATTERNS?.EMAIL_REGEX,
-								message: "Entered email does not match email format",
-							},
+							// pattern: {
+							// 	value: constants.REGEX_PATTERNS?.EMAIL_REGEX,
+							// 	message: "Entered email does not match email format",
+							// },
 						})}
 					/>
 					{errors.email && <span role="alert">{errors.email.message}</span>}
@@ -109,7 +109,7 @@ const CreateUserForm = () => {
 						id="exampleInputPassword1"
 						{...register("password", {
 							required: {
-								value: true,
+								value: false,
 								message: "Password is required",
 							},
 							pattern: {
