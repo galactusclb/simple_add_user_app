@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import useAuth from "../hooks/useAuth";
 
 import { constants } from "utils/constants";
+import { Button } from "@components/ui/button/Button";
 
 type Inputs = {
 	email: string;
@@ -14,18 +14,19 @@ type Inputs = {
 };
 
 const SignupForm = () => {
-	const navigate = useNavigate();
-
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
-	} = useForm<Inputs>();
+		reset,
+	} = useForm<Inputs>({
+		mode: "onChange",
+	});
 
-	const { signup } = useAuth();
+	const { isLoading, createUser } = useAuth(reset);
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => signup(data);
+	const onSubmit: SubmitHandler<Inputs> = (data) => createUser(data);
 
 	return (
 		<div className="form-wrapper px-4 py-5">
@@ -117,12 +118,29 @@ const SignupForm = () => {
 							},
 						})}
 					/>
-					{errors.password && <span>{errors?.password?.message}</span>}
+					{errors.password && (
+						<span role="alert">{errors?.password?.message}</span>
+					)}
 				</div>
 
-				<button type="submit" className="btn btn-primary">
-					Create new user
-				</button>
+				<div className="d-flex flex-row justify-content-end mt-4">
+					<Button
+						type="reset"
+						className="btn"
+						variant={"link"}
+						onClick={() => reset()}
+					>
+						Reset
+					</Button>
+					<Button
+						type="submit"
+						className="btn btn-primary ms-2"
+						disabled={isLoading}
+						isLoading={isLoading}
+					>
+						Create new user
+					</Button>
+				</div>
 			</form>
 		</div>
 	);

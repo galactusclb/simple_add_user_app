@@ -6,8 +6,3 @@ export const validateRegister = [
     body('firstName').trim().notEmpty().withMessage('First name is required'),
     body('lastName').trim().notEmpty().withMessage('Last name is required'),
 ];
-
-export const validateLogin = [
-    body('userName').trim().notEmpty().withMessage('UserName is required'),
-    body('password').trim().notEmpty().withMessage('Password is required'),
-];

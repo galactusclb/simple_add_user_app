@@ -11,4 +11,9 @@
 	.form-label {
 		margin-bottom: 0.25rem;
 	}
+
+	span[role="alert"] {
+		color: var(--color-red-500);
+		font-size: var(--txt-xs);
+	}
 }

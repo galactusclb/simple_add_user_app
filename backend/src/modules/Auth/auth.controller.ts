@@ -1,8 +1,9 @@
 
 import { Controller } from "middlewares/make-express-callback.middleware";
-import { doLogin, doSignup } from "./auth.service";
-import { InternalServerError, UnauthorizedError } from "utils/api-errors";
-import { createAccessToken, createRefreshToken, validateRefreshToken } from "./auth.utils";
+
+import { InternalServerError } from "utils/api-errors";
+
+import { doSignup } from "./auth.service";
 
 export const signUp: Controller = async (httpRequest) => {
     const {
@@ -30,35 +31,3 @@ export const signUp: Controller = async (httpRequest) => {
     }
 }
 
-export const login: Controller = async (httpRequest) => {
-    const { userName, password } = httpRequest.body
-
-    const loginData = await doLogin(userName, password)
-
-    if (!loginData || !loginData.userDoc._id || !loginData.refreshTokenDoc?._id) {
-        throw new InternalServerError()
-    }
-
-    const accessToken = createAccessToken({
-        tokenId: loginData.refreshTokenDoc?._id,
-        userId: loginData.userDoc._id,
-    })
-    // const refreshToken = createRefreshToken(loginData.userDoc._id, loginData.refreshTokenDoc?._id)
-
-    const refreshToken = createRefreshToken({
-        tokenId: loginData.refreshTokenDoc?._id,
-        userId: loginData.userDoc._id,
-    })
-
-    return {
-        statusCode: 201,
-        body: {
-            success: true,
-            data: {
-                userDoc: loginData?.userDoc,
-                refreshToken,
-                accessToken
-            }
-        }
-    }
-}

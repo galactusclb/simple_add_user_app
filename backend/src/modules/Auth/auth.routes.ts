@@ -1,8 +1,8 @@
 import express, { Router } from "express"
 
 import { makeExpressCallback, makeValidatorCallback } from "middlewares"
-import { login, signUp } from "./auth.controller"
-import { validateLogin, validateRegister } from "./auth.validator"
+import { signUp } from "./auth.controller"
+import { validateRegister } from "./auth.validator"
 
 const route: Router = express.Router()
 

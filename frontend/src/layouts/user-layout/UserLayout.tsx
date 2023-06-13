@@ -15,9 +15,9 @@ const UserLayout = () => {
 
 	return (
 		<div className={`container-fluid px-0 ${style["layout-wrapper"]}`}>
-			<Header />
+			{/* <Header /> */}
 
-			<div className="pt-5">
+			<div className={`${style["page-wrapper"]} pt-5`}>
 				<Routes>
 					{getRoutes(UserRoutes, location?.pathname)}
 					<Route path="*" element={<Navigate to="/notices" replace />} />
